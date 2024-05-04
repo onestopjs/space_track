@@ -2,6 +2,7 @@ use serde::Deserialize;
 
 use crate::{
     space_track::{
+        urls::BOXSCORE_URL,
         utils::{deserialize_optional_string_to_u64, deserialize_string_to_u64},
         Config,
     },
@@ -37,12 +38,7 @@ pub struct Boxscore {
 
 impl SpaceTrack {
     pub async fn boxscore(&mut self, config: Config) -> Result<Vec<Boxscore>, reqwest::Error> {
-        let url = "https://www.space-track.org/basicspacedata/query/class/boxscore";
-        let body = self.get(url, config).await?;
-
-        let boxscores: Vec<Boxscore> = body.json().await?;
-
-        Ok(boxscores)
+        Ok(self.get(BOXSCORE_URL, config).await?.json().await?)
     }
 
     pub async fn all_boxscore(&mut self) -> Result<Vec<Boxscore>, reqwest::Error> {
