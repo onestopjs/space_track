@@ -3,12 +3,14 @@ use reqwest::Client;
 mod auth;
 mod classes;
 mod config;
+mod error;
 mod urls;
 mod utils;
 
 pub use auth::Credentials;
 pub use classes::{Boxscore, Decay};
 pub use config::Config;
+use error::Error;
 
 pub struct SpaceTrack {
     credentials: Credentials,
@@ -41,14 +43,10 @@ impl SpaceTrack {
         }
     }
 
-    async fn get(
-        &mut self,
-        url: &str,
-        config: Config,
-    ) -> Result<reqwest::Response, reqwest::Error> {
-        let cookie = self.get_cookie().await.clone();
+    async fn get(&mut self, url: &str, config: Config) -> Result<reqwest::Response, Error> {
+        let cookie = self.get_cookie().await?.clone();
         let url = construct_url(url, config);
 
-        self.client.get(url).header("Cookie", cookie).send().await
+        Ok(self.client.get(url).header("Cookie", cookie).send().await?)
     }
 }

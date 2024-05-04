@@ -2,6 +2,7 @@ use serde::Deserialize;
 
 use crate::{
     space_track::{
+        error::Error,
         urls::DECAY_URL,
         utils::{
             deserialize_optional_string_to_u64, deserialize_string_to_u64, deserialize_string_to_u8,
@@ -51,11 +52,11 @@ pub struct Decay {
 }
 
 impl SpaceTrack {
-    pub async fn decay(&mut self, config: Config) -> Result<Vec<Decay>, reqwest::Error> {
+    pub async fn decay(&mut self, config: Config) -> Result<Vec<Decay>, Error> {
         Ok(self.get(DECAY_URL, config).await?.json().await?)
     }
 
-    pub async fn all_decay(&mut self) -> Result<Vec<Decay>, reqwest::Error> {
+    pub async fn all_decay(&mut self) -> Result<Vec<Decay>, Error> {
         self.decay(Config::empty()).await
     }
 }
