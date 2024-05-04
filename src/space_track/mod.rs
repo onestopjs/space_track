@@ -6,7 +6,7 @@ mod urls;
 mod utils;
 
 pub use auth::Credentials;
-pub use classes::Boxscore;
+pub use classes::{Boxscore, Decay};
 
 pub struct SpaceTrack {
     credentials: Credentials,
