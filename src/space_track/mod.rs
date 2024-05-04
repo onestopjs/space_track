@@ -10,7 +10,7 @@ mod utils;
 
 pub use auth::Credentials;
 pub use classes::{Boxscore, Decay};
-pub use config::Config;
+pub use config::{Config, Direction};
 use error::Error;
 use url::construct_url;
 
