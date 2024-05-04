@@ -4,6 +4,7 @@ mod auth;
 mod classes;
 mod config;
 mod error;
+mod url;
 mod urls;
 mod utils;
 
@@ -11,27 +12,12 @@ pub use auth::Credentials;
 pub use classes::{Boxscore, Decay};
 pub use config::Config;
 use error::Error;
+use url::construct_url;
 
 pub struct SpaceTrack {
     credentials: Credentials,
     cookie: Option<Cookie>,
     client: Client,
-}
-
-fn construct_url(base: &str, config: Config) -> String {
-    let mut url = base.to_string();
-
-    url.push_str("/");
-
-    if let Some(limit) = config.limit {
-        url.push_str(&format!("limit/{}", limit));
-
-        if let Some(offset) = config.offset {
-            url.push_str(&format!(",{}", offset));
-        }
-    }
-
-    url
 }
 
 impl SpaceTrack {
