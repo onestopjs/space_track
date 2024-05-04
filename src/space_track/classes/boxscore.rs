@@ -1,7 +1,7 @@
 use serde::Deserialize;
 
 use crate::{
-    space_track::utils::{deserialize_optional_string_to_i64, deserialize_string_to_i64},
+    space_track::utils::{deserialize_optional_string_to_u64, deserialize_string_to_u64},
     SpaceTrack,
 };
 
@@ -10,26 +10,26 @@ use crate::{
 pub struct Boxscore {
     pub country: String,
     pub spadoc_cd: Option<String>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub orbital_tba: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub orbital_payload_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub orbital_rocket_body_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub orbital_debris_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub orbital_total_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub decayed_payload_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub decayed_rocket_body_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub decayed_debris_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_i64")]
-    pub decayed_total_count: Option<i64>,
-    #[serde(deserialize_with = "deserialize_string_to_i64")]
-    pub country_total: i64,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub orbital_tba: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub orbital_payload_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub orbital_rocket_body_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub orbital_debris_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub orbital_total_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub decayed_payload_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub decayed_rocket_body_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub decayed_debris_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub decayed_total_count: Option<u64>,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub country_total: u64,
 }
 
 impl SpaceTrack {
