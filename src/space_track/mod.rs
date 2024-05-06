@@ -9,7 +9,7 @@ mod urls;
 mod utils;
 
 pub use auth::Credentials;
-pub use classes::{Boxscore, BoxscoreField, Decay, DecayField};
+pub use classes::{Boxscore, BoxscoreField, CdmPublic, CdmPublicField, Decay, DecayField};
 pub use config::{Config, Direction};
 use error::Error;
 use url::construct_url;

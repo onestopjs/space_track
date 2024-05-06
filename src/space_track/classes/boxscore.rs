@@ -44,7 +44,7 @@ impl OrderByField for BoxscoreField {
     }
 }
 
-#[derive(Serialize, Deserialize, Hash, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct Boxscore {
     pub country: String,

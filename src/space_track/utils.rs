@@ -43,3 +43,9 @@ pub fn deserialize_string_to_u8<'de, D: Deserializer<'de>>(
 ) -> Result<u8, D::Error> {
     deserialize_string(deserializer)
 }
+
+pub fn deserialize_optional_string_to_f64<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<Option<f64>, D::Error> {
+    deserialize_optional_string(deserializer)
+}

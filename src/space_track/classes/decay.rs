@@ -48,7 +48,7 @@ impl OrderByField for DecayField {
     }
 }
 
-#[derive(Serialize, Deserialize, Hash, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct Decay {
     #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
