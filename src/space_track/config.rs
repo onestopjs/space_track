@@ -12,6 +12,7 @@ pub struct Config {
     pub limit: Option<u32>,
     pub offset: Option<u32>,
     pub order_by: Vec<OrderBy>,
+    pub distinct: bool,
 }
 
 impl Config {
@@ -20,6 +21,7 @@ impl Config {
             limit: Some(100),
             offset: None,
             order_by: Vec::new(),
+            distinct: false,
         }
     }
 
@@ -28,6 +30,7 @@ impl Config {
             limit: None,
             offset: None,
             order_by: Vec::new(),
+            distinct: false,
         }
     }
 
@@ -43,6 +46,11 @@ impl Config {
 
     pub fn order_by(mut self, field: String, direction: Direction) -> Config {
         self.order_by.push(OrderBy { field, direction });
+        self
+    }
+
+    pub fn distinct(mut self) -> Config {
+        self.distinct = true;
         self
     }
 }

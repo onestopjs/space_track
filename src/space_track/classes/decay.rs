@@ -12,23 +12,6 @@ use crate::{
     SpaceTrack,
 };
 
-/*
-Field	Type	Null	Key	Default	Extra
-NORAD_CAT_ID	int(11) unsigned	YES
-OBJECT_NUMBER	int(11) unsigned	YES
-OBJECT_NAME	char(25)	NO
-INTLDES	char(12)	NO
-OBJECT_ID	char(12)	NO
-RCS	int(1)	NO		0
-RCS_SIZE	varchar(6)	YES
-COUNTRY	char(6)	NO
-MSG_EPOCH	datetime	YES
-DECAY_EPOCH	varchar(24)	YES
-SOURCE	varchar(9)	NO
-MSG_TYPE	varchar(10)	NO
-PRECEDENCE	bigint(20)	NO		0
-*/
-
 #[derive(Deserialize)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct Decay {
