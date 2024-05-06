@@ -9,10 +9,12 @@ mod urls;
 mod utils;
 
 pub use auth::Credentials;
-pub use classes::{Boxscore, Decay};
+pub use classes::{Boxscore, BoxscoreField, Decay, DecayField};
 pub use config::{Config, Direction};
 use error::Error;
 use url::construct_url;
+
+use self::config::OrderByField;
 
 pub struct SpaceTrack {
     credentials: Credentials,
@@ -29,7 +31,11 @@ impl SpaceTrack {
         }
     }
 
-    async fn get(&mut self, url: &str, config: Config) -> Result<reqwest::Response, Error> {
+    async fn get<T: OrderByField>(
+        &mut self,
+        url: &str,
+        config: Config<T>,
+    ) -> Result<reqwest::Response, Error> {
         let cookie = self.get_cookie().await?.clone();
         let url = construct_url(url, config);
 

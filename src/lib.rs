@@ -1,3 +1,5 @@
 mod space_track;
 
-pub use space_track::{Boxscore, Config, Credentials, Decay, Direction, SpaceTrack};
+pub use space_track::{
+    Boxscore, BoxscoreField, Config, Credentials, Decay, DecayField, Direction, SpaceTrack,
+};

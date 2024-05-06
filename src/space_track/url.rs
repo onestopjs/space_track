@@ -1,8 +1,8 @@
 use crate::Config;
 
-use super::config::Direction;
+use super::config::{Direction, OrderByField};
 
-fn set_limit<'a>(url: &'a mut String, config: &Config) -> &'a String {
+fn set_limit<'a, T: OrderByField>(url: &'a mut String, config: &Config<T>) -> &'a String {
     if let Some(limit) = config.limit {
         url.push_str(&format!("/limit/{}", limit));
 
@@ -14,7 +14,7 @@ fn set_limit<'a>(url: &'a mut String, config: &Config) -> &'a String {
     url
 }
 
-fn set_order_by<'a>(url: &'a mut String, config: &Config) -> &'a String {
+fn set_order_by<'a, T: OrderByField>(url: &'a mut String, config: &Config<T>) -> &'a String {
     if !config.order_by.is_empty() {
         url.push_str("/orderby/");
 
@@ -24,7 +24,7 @@ fn set_order_by<'a>(url: &'a mut String, config: &Config) -> &'a String {
             .map(|order_by| {
                 format!(
                     "{} {}",
-                    order_by.field,
+                    order_by.field.field(),
                     match order_by.direction {
                         Direction::Ascending => "asc",
                         Direction::Descending => "desc",
@@ -40,7 +40,7 @@ fn set_order_by<'a>(url: &'a mut String, config: &Config) -> &'a String {
     url
 }
 
-fn set_distinct<'a>(url: &'a mut String, config: &Config) -> &'a String {
+fn set_distinct<'a, T: OrderByField>(url: &'a mut String, config: &Config<T>) -> &'a String {
     if config.distinct {
         url.push_str("/distinct/true");
     }
@@ -48,7 +48,7 @@ fn set_distinct<'a>(url: &'a mut String, config: &Config) -> &'a String {
     url
 }
 
-pub fn construct_url(base: &str, config: Config) -> String {
+pub fn construct_url<T: OrderByField>(base: &str, config: Config<T>) -> String {
     let mut url = base.to_string();
 
     set_limit(&mut url, &config);
@@ -60,12 +60,14 @@ pub fn construct_url(base: &str, config: Config) -> String {
 
 #[cfg(test)]
 mod tests {
+    use crate::space_track::classes::BoxscoreField;
+
     use super::*;
 
     #[test]
     fn test_empty_config() {
         let base = "https://www.space-track.org/basicspacedata/query/class/boxscore";
-        let config = Config::empty();
+        let config = Config::<BoxscoreField>::empty();
 
         assert_eq!(
             construct_url(base, config),
@@ -76,7 +78,7 @@ mod tests {
     #[test]
     fn test_limit() {
         let base = "https://www.space-track.org/basicspacedata/query/class/boxscore";
-        let config = Config::new().limit(5).offset(0);
+        let config = Config::<BoxscoreField>::new().limit(5).offset(0);
 
         assert_eq!(
             construct_url(base, config),
@@ -87,9 +89,9 @@ mod tests {
     #[test]
     fn test_order_by() {
         let base = "https://www.space-track.org/basicspacedata/query/class/boxscore";
-        let config = Config::empty()
-            .order_by("COUNTRY".to_string(), Direction::Ascending)
-            .order_by("COUNTRY_TOTAL".to_string(), Direction::Descending);
+        let config = Config::<BoxscoreField>::empty()
+            .order_by(BoxscoreField::Country, Direction::Ascending)
+            .order_by(BoxscoreField::CountryTotal, Direction::Descending);
 
         assert_eq!(
             construct_url(base, config),
@@ -100,7 +102,7 @@ mod tests {
     #[test]
     fn test_distinct() {
         let base = "https://www.space-track.org/basicspacedata/query/class/boxscore";
-        let config = Config::empty().distinct();
+        let config = Config::<BoxscoreField>::empty().distinct();
 
         assert_eq!(
             construct_url(base, config),

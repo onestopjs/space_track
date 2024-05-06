@@ -1,5 +1,5 @@
 mod boxscore;
-pub use boxscore::Boxscore;
+pub use boxscore::{Boxscore, BoxscoreField};
 
 mod decay;
-pub use decay::Decay;
+pub use decay::{Decay, DecayField};

@@ -1,7 +1,6 @@
-use serde::Deserialize;
-
 use crate::{
     space_track::{
+        config::OrderByField,
         error::Error,
         urls::DECAY_URL,
         utils::{
@@ -11,6 +10,43 @@ use crate::{
     },
     SpaceTrack,
 };
+use serde::Deserialize;
+
+pub enum DecayField {
+    NoradCatId,
+    ObjectNumber,
+    ObjectName,
+    Intldes,
+    ObjectId,
+    Rcs,
+    RcsSize,
+    Country,
+    MsgEpoch,
+    DecayEpoch,
+    Source,
+    MsgType,
+    Precedence,
+}
+
+impl OrderByField for DecayField {
+    fn field(&self) -> &str {
+        match self {
+            DecayField::NoradCatId => "NORAD_CAT_ID",
+            DecayField::ObjectNumber => "OBJECT_NUMBER",
+            DecayField::ObjectName => "OBJECT_NAME",
+            DecayField::Intldes => "INTLDES",
+            DecayField::ObjectId => "OBJECT_ID",
+            DecayField::Rcs => "RCS",
+            DecayField::RcsSize => "RCS_SIZE",
+            DecayField::Country => "COUNTRY",
+            DecayField::MsgEpoch => "MSG_EPOCH",
+            DecayField::DecayEpoch => "DECAY_EPOCH",
+            DecayField::Source => "SOURCE",
+            DecayField::MsgType => "MSG_TYPE",
+            DecayField::Precedence => "PRECEDENCE",
+        }
+    }
+}
 
 #[derive(Deserialize)]
 #[serde(rename_all = "UPPERCASE")]
@@ -35,7 +71,7 @@ pub struct Decay {
 }
 
 impl SpaceTrack {
-    pub async fn decay(&mut self, config: Config) -> Result<Vec<Decay>, Error> {
+    pub async fn decay(&mut self, config: Config<DecayField>) -> Result<Vec<Decay>, Error> {
         Ok(self.get(DECAY_URL, config).await?.json().await?)
     }
 
