@@ -8,7 +8,7 @@ use crate::{
     },
     SpaceTrack,
 };
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 pub enum BoxscoreField {
     Country,
@@ -44,7 +44,7 @@ impl OrderByField for BoxscoreField {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct Boxscore {
     pub country: String,

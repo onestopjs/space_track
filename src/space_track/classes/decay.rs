@@ -10,7 +10,7 @@ use crate::{
     },
     SpaceTrack,
 };
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 pub enum DecayField {
     NoradCatId,
@@ -48,7 +48,7 @@ impl OrderByField for DecayField {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize, Hash, Debug)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct Decay {
     #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
