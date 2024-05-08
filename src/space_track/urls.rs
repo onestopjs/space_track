@@ -3,3 +3,4 @@ pub const BOXSCORE_URL: &str = "https://www.space-track.org/basicspacedata/query
 pub const CDM_PUBLIC_URL: &str =
     "https://www.space-track.org/basicspacedata/query/class/cdm_public";
 pub const DECAY_URL: &str = "https://www.space-track.org/basicspacedata/query/class/decay";
+pub const GP_URL: &str = "https://www.space-track.org/basicspacedata/query/class/gp";
