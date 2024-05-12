@@ -11,7 +11,7 @@ mod utils;
 pub use auth::Credentials;
 pub use classes::{
     Boxscore, BoxscoreField, CdmPublic, CdmPublicField, Decay, DecayField, GeneralPerturbation,
-    GeneralPerturbationField,
+    GeneralPerturbationField, LaunchSite, LaunchSiteField,
 };
 pub use config::{Config, Direction};
 use error::Error;

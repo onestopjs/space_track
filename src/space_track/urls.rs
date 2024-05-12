@@ -6,3 +6,5 @@ pub const DECAY_URL: &str = "https://www.space-track.org/basicspacedata/query/cl
 pub const GP_URL: &str = "https://www.space-track.org/basicspacedata/query/class/gp";
 pub const GP_HISTORY_URL: &str =
     "https://www.space-track.org/basicspacedata/query/class/gp_history";
+pub const LAUNCH_SITE_URL: &str =
+    "https://www.space-track.org/basicspacedata/query/class/launch_site";
