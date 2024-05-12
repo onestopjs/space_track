@@ -14,7 +14,7 @@ pub use classes::{
     GeneralPerturbationField, LaunchSite, LaunchSiteField,
 };
 pub use config::{Config, Direction};
-use error::Error;
+pub use error::Error;
 use url::construct_url;
 
 use self::config::OrderByField;
@@ -39,7 +39,13 @@ impl SpaceTrack {
         url: &str,
         config: Config<T>,
     ) -> Result<reqwest::Response, Error> {
-        let cookie = self.get_cookie().await?.clone();
+        let cookie = self.get_cookie().await.map_err(|err| match err {
+            Error::RequestError { source } => Error::AuthError { source },
+            _ => Error::CookieError,
+        })?;
+
+        let cookie = cookie.clone();
+
         let url = construct_url(url, config);
 
         Ok(self.client.get(url).header("Cookie", cookie).send().await?)

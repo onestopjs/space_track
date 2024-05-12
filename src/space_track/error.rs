@@ -2,8 +2,10 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
+    #[error("Auth error: {source}")]
+    AuthError { source: reqwest::Error },
     #[error("Request error: {source}")]
-    AuthError {
+    RequestError {
         #[from]
         source: reqwest::Error,
     },
