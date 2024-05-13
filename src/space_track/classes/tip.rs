@@ -3,7 +3,10 @@ use crate::{
         config::OrderByField,
         error::Error,
         urls::TIP_URL,
-        utils::{deserialize_string_to_f64, deserialize_string_to_u16, deserialize_string_to_u64},
+        utils::{
+            deserialize_string_to_bool, deserialize_string_to_f64, deserialize_string_to_u16,
+            deserialize_string_to_u64,
+        },
         Config,
     },
     SpaceTrack,
@@ -71,7 +74,8 @@ pub struct Tip {
     pub next_report: u16,
     #[serde(deserialize_with = "deserialize_string_to_u64")]
     pub id: u64,
-    pub high_interest: String,
+    #[serde(deserialize_with = "deserialize_string_to_bool")]
+    pub high_interest: bool,
     #[serde(deserialize_with = "deserialize_string_to_u64")]
     pub object_number: u64,
 }

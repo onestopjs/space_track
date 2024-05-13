@@ -85,3 +85,12 @@ pub fn deserialize_optional_string_to_f64<'de, D: Deserializer<'de>>(
 ) -> Result<Option<f64>, D::Error> {
     deserialize_optional_string(deserializer)
 }
+
+pub fn deserialize_string_to_bool<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<bool, D::Error> {
+    Ok(match Value::deserialize(deserializer)? {
+        Value::String(s) => s == "Y",
+        _ => return Err(de::Error::custom("wrong type")),
+    })
+}

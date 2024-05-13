@@ -5,8 +5,8 @@ use crate::{
         urls::SATCAT_DEBUT_URL,
         utils::{
             deserialize_optional_string_to_f64, deserialize_optional_string_to_u64,
-            deserialize_optional_string_to_u8, deserialize_string_to_i8, deserialize_string_to_u16,
-            deserialize_string_to_u64,
+            deserialize_optional_string_to_u8, deserialize_string_to_bool,
+            deserialize_string_to_i8, deserialize_string_to_u16, deserialize_string_to_u64,
         },
         Config,
     },
@@ -111,7 +111,8 @@ pub struct SatCatDebut {
     #[serde(deserialize_with = "deserialize_string_to_u16")]
     pub launch_num: u16,
     pub launch_piece: String,
-    pub current: String,
+    #[serde(deserialize_with = "deserialize_string_to_bool")]
+    pub current: bool,
     pub object_name: String,
     pub object_id: String,
     #[serde(deserialize_with = "deserialize_string_to_u64")]
