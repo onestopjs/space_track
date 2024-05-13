@@ -3,6 +3,8 @@ use std::str::FromStr;
 use serde::{de, Deserialize, Deserializer};
 use serde_json::Value;
 
+use crate::Direction;
+
 fn deserialize_string<'de, D: Deserializer<'de>, T: FromStr>(deserializer: D) -> Result<T, D::Error>
 where
     <T as FromStr>::Err: std::fmt::Display,
@@ -91,6 +93,19 @@ pub fn deserialize_string_to_bool<'de, D: Deserializer<'de>>(
 ) -> Result<bool, D::Error> {
     Ok(match Value::deserialize(deserializer)? {
         Value::String(s) => s == "Y",
+        _ => return Err(de::Error::custom("wrong type")),
+    })
+}
+
+pub fn deserialize_string_to_direction<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<Direction, D::Error> {
+    Ok(match Value::deserialize(deserializer)? {
+        Value::String(s) => match s.as_str() {
+            "ascending" => Direction::Ascending,
+            "descending" => Direction::Descending,
+            _ => return Err(de::Error::custom("wrong value")),
+        },
         _ => return Err(de::Error::custom("wrong type")),
     })
 }

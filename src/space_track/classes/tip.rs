@@ -4,12 +4,12 @@ use crate::{
         error::Error,
         urls::TIP_URL,
         utils::{
-            deserialize_string_to_bool, deserialize_string_to_f64, deserialize_string_to_u16,
-            deserialize_string_to_u64,
+            deserialize_string_to_bool, deserialize_string_to_direction, deserialize_string_to_f64,
+            deserialize_string_to_u16, deserialize_string_to_u64,
         },
         Config,
     },
-    SpaceTrack,
+    Direction, SpaceTrack,
 };
 use serde::{Deserialize, Serialize};
 
@@ -63,7 +63,8 @@ pub struct Tip {
     pub window: u16,
     #[serde(deserialize_with = "deserialize_string_to_u16")]
     pub rev: u16,
-    pub direction: String,
+    #[serde(deserialize_with = "deserialize_string_to_direction")]
+    pub direction: Direction,
     #[serde(deserialize_with = "deserialize_string_to_f64")]
     pub lat: f64,
     #[serde(deserialize_with = "deserialize_string_to_f64")]

@@ -1,17 +1,22 @@
+use serde::{Deserialize, Serialize};
+
 pub trait OrderByField {
     fn field(&self) -> &str;
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub enum Direction {
     Ascending,
     Descending,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderBy<T: OrderByField> {
     pub field: T,
     pub direction: Direction,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Config<T: OrderByField> {
     pub limit: Option<u32>,
     pub offset: Option<u32>,
