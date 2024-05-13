@@ -17,3 +17,6 @@ pub use launch_site::{LaunchSite, LaunchSiteField};
 
 mod satcat;
 pub use satcat::{SatCat, SatCatField};
+
+mod satcat_change;
+pub use satcat_change::{SatCatChange, SatCatChangeField};

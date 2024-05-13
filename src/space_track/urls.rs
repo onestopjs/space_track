@@ -9,3 +9,5 @@ pub const GP_HISTORY_URL: &str =
 pub const LAUNCH_SITE_URL: &str =
     "https://www.space-track.org/basicspacedata/query/class/launch_site";
 pub const SATCAT_URL: &str = "https://www.space-track.org/basicspacedata/query/class/satcat";
+pub const SATCAT_CHANGE_URL: &str =
+    "https://www.space-track.org/basicspacedata/query/class/satcat_change";

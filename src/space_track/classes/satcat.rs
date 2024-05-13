@@ -118,31 +118,6 @@ pub struct SatCat {
 
 impl SpaceTrack {
     pub async fn satcat(&mut self, config: Config<SatCatField>) -> Result<Vec<SatCat>, Error> {
-        // let x = self.get(SATCAT_URL, config).await?;
-        // let y = x.text().await;
-
-        // println!("{:?}", y);
-
-        // Ok(vec![])
-
-        // match y {
-        //     Ok(z) => Ok(z),
-        //     Err(e) => {
-        //         println!("{}", e);
-        //         return Ok(vec![]);
-        //     }
-        // }
-
-        // let text = self.get(SATCAT_URL, config).await?.text().await?;
-
-        // let res = serde_json::from_str::<Vec<SatCat>>(&text);
-
-        // if let Err(x) = res {
-        //     println!("{:?}", x);
-        // }
-
-        // Ok(res.unwrap())
-
         Ok(self.get(SATCAT_URL, config).await?.json().await?)
     }
 
