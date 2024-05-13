@@ -2,6 +2,12 @@
 name = "space_track"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "A Rust client for the Space-Track API"
+repository = "https://github.com/onestopjs/space_track"
+readme = "README.md"
+keywords = ["space-track", "space", "track", "api", "client"]
+categories = ["aerospace", "api-bindings"]
 
 [dependencies]
 reqwest = { version = "0.12.4", features = ["json"] }
