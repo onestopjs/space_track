@@ -16,7 +16,7 @@ pub enum DecayField {
     NoradCatId,
     ObjectNumber,
     ObjectName,
-    Intldes,
+    IntlDes,
     ObjectId,
     Rcs,
     RcsSize,
@@ -34,7 +34,7 @@ impl OrderByField for DecayField {
             DecayField::NoradCatId => "NORAD_CAT_ID",
             DecayField::ObjectNumber => "OBJECT_NUMBER",
             DecayField::ObjectName => "OBJECT_NAME",
-            DecayField::Intldes => "INTLDES",
+            DecayField::IntlDes => "INTLDES",
             DecayField::ObjectId => "OBJECT_ID",
             DecayField::Rcs => "RCS",
             DecayField::RcsSize => "RCS_SIZE",
@@ -56,7 +56,8 @@ pub struct Decay {
     #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
     pub object_number: Option<u64>,
     pub object_name: String,
-    pub intldes: String,
+    #[serde(rename = "INTLDES")]
+    pub intl_des: String,
     pub object_id: String,
     #[serde(deserialize_with = "deserialize_string_to_u8")]
     pub rcs: u8,

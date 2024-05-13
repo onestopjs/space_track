@@ -75,7 +75,8 @@ impl OrderByField for SatCatField {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "UPPERCASE")]
 pub struct SatCat {
-    pub intldes: String,
+    #[serde(rename = "INTLDES")]
+    pub intl_des: String,
     #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
     pub norad_cat_id: Option<u64>,
     pub object_type: String,
