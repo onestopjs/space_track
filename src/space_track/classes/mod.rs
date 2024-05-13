@@ -14,3 +14,6 @@ mod gp_history;
 
 mod launch_site;
 pub use launch_site::{LaunchSite, LaunchSiteField};
+
+mod satcat;
+pub use satcat::{SatCat, SatCatField};

@@ -38,9 +38,27 @@ pub fn deserialize_string_to_u64<'de, D: Deserializer<'de>>(
     deserialize_string(deserializer)
 }
 
+pub fn deserialize_string_to_f64<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<f64, D::Error> {
+    deserialize_string(deserializer)
+}
+
 pub fn deserialize_string_to_u8<'de, D: Deserializer<'de>>(
     deserializer: D,
 ) -> Result<u8, D::Error> {
+    deserialize_string(deserializer)
+}
+
+pub fn deserialize_string_to_i8<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<i8, D::Error> {
+    deserialize_string(deserializer)
+}
+
+pub fn deserialize_string_to_u16<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<u16, D::Error> {
     deserialize_string(deserializer)
 }
 
