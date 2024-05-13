@@ -5,7 +5,7 @@ use crate::{
         urls::TIP_URL,
         utils::{
             deserialize_string_to_bool, deserialize_string_to_direction, deserialize_string_to_f64,
-            deserialize_string_to_u16, deserialize_string_to_u64,
+            deserialize_string_to_u64,
         },
         Config,
     },
@@ -59,10 +59,10 @@ pub struct Tip {
     pub msg_epoch: String,
     pub insert_epoch: String,
     pub decay_epoch: String,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub window: u16,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub rev: u16,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub window: u64,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub rev: u64,
     #[serde(deserialize_with = "deserialize_string_to_direction")]
     pub direction: Direction,
     #[serde(deserialize_with = "deserialize_string_to_f64")]
@@ -71,8 +71,8 @@ pub struct Tip {
     pub lon: f64,
     #[serde(deserialize_with = "deserialize_string_to_f64")]
     pub incl: f64,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub next_report: u16,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub next_report: u64,
     #[serde(deserialize_with = "deserialize_string_to_u64")]
     pub id: u64,
     #[serde(deserialize_with = "deserialize_string_to_bool")]

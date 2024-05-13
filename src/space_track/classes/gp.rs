@@ -4,8 +4,7 @@ use crate::{
         error::Error,
         urls::GP_URL,
         utils::{
-            deserialize_optional_string_to_f64, deserialize_optional_string_to_u16,
-            deserialize_optional_string_to_u32, deserialize_optional_string_to_u64,
+            deserialize_optional_string_to_f64, deserialize_optional_string_to_u64,
             deserialize_optional_string_to_u8, deserialize_string_to_u64,
         },
         Config,
@@ -135,10 +134,10 @@ pub struct GeneralPerturbation {
     pub classification_type: Option<String>,
     #[serde(deserialize_with = "deserialize_string_to_u64")]
     pub norad_cat_id: u64,
-    #[serde(deserialize_with = "deserialize_optional_string_to_u16")]
-    pub element_set_no: Option<u16>,
-    #[serde(deserialize_with = "deserialize_optional_string_to_u32")]
-    pub rev_at_epoch: Option<u32>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub element_set_no: Option<u64>,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u64")]
+    pub rev_at_epoch: Option<u64>,
     #[serde(deserialize_with = "deserialize_optional_string_to_f64")]
     pub bstar: Option<f64>,
     #[serde(deserialize_with = "deserialize_optional_string_to_f64")]

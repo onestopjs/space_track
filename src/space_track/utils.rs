@@ -52,33 +52,9 @@ pub fn deserialize_string_to_u8<'de, D: Deserializer<'de>>(
     deserialize_string(deserializer)
 }
 
-pub fn deserialize_string_to_i8<'de, D: Deserializer<'de>>(
-    deserializer: D,
-) -> Result<i8, D::Error> {
-    deserialize_string(deserializer)
-}
-
-pub fn deserialize_string_to_u16<'de, D: Deserializer<'de>>(
-    deserializer: D,
-) -> Result<u16, D::Error> {
-    deserialize_string(deserializer)
-}
-
 pub fn deserialize_optional_string_to_u8<'de, D: Deserializer<'de>>(
     deserializer: D,
 ) -> Result<Option<u8>, D::Error> {
-    deserialize_optional_string(deserializer)
-}
-
-pub fn deserialize_optional_string_to_u16<'de, D: Deserializer<'de>>(
-    deserializer: D,
-) -> Result<Option<u16>, D::Error> {
-    deserialize_optional_string(deserializer)
-}
-
-pub fn deserialize_optional_string_to_u32<'de, D: Deserializer<'de>>(
-    deserializer: D,
-) -> Result<Option<u32>, D::Error> {
     deserialize_optional_string(deserializer)
 }
 

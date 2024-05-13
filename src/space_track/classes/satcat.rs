@@ -5,8 +5,8 @@ use crate::{
         urls::SATCAT_URL,
         utils::{
             deserialize_optional_string_to_u64, deserialize_optional_string_to_u8,
-            deserialize_string_to_bool, deserialize_string_to_f64, deserialize_string_to_i8,
-            deserialize_string_to_u16, deserialize_string_to_u64,
+            deserialize_string_to_bool, deserialize_string_to_f64, deserialize_string_to_u64,
+            deserialize_string_to_u8,
         },
         Config,
     },
@@ -99,15 +99,15 @@ pub struct SatCat {
     #[serde(deserialize_with = "deserialize_optional_string_to_u8")]
     pub comment_code: Option<u8>,
     #[serde(rename = "RCSVALUE")]
-    #[serde(deserialize_with = "deserialize_string_to_i8")]
-    pub rcs_value: i8,
+    #[serde(deserialize_with = "deserialize_string_to_u8")]
+    pub rcs_value: u8,
     pub rcs_size: Option<String>,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub file: u16,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub launch_year: u16,
-    #[serde(deserialize_with = "deserialize_string_to_u16")]
-    pub launch_num: u16,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub file: u64,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub launch_year: u64,
+    #[serde(deserialize_with = "deserialize_string_to_u64")]
+    pub launch_num: u64,
     pub launch_piece: String,
     #[serde(deserialize_with = "deserialize_string_to_bool")]
     pub current: bool,

@@ -3,9 +3,7 @@ use crate::{
         config::OrderByField,
         error::Error,
         urls::DECAY_URL,
-        utils::{
-            deserialize_optional_string_to_u64, deserialize_string_to_u64, deserialize_string_to_u8,
-        },
+        utils::{deserialize_optional_string_to_u64, deserialize_string_to_u8},
         Config,
     },
     SpaceTrack,
@@ -67,8 +65,8 @@ pub struct Decay {
     pub decay_epoch: Option<String>,
     pub source: String,
     pub msg_type: String,
-    #[serde(deserialize_with = "deserialize_string_to_u64")]
-    pub precedence: u64,
+    #[serde(deserialize_with = "deserialize_string_to_u8")]
+    pub precedence: u8,
 }
 
 impl SpaceTrack {
