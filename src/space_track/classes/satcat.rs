@@ -4,9 +4,9 @@ use crate::{
         error::Error,
         urls::SATCAT_URL,
         utils::{
-            deserialize_optional_string_to_u64, deserialize_string_to_f64,
-            deserialize_string_to_i8, deserialize_string_to_u16, deserialize_string_to_u64,
-            deserialize_string_to_u8,
+            deserialize_optional_string_to_u64, deserialize_optional_string_to_u8,
+            deserialize_string_to_f64, deserialize_string_to_i8, deserialize_string_to_u16,
+            deserialize_string_to_u64,
         },
         Config,
     },
@@ -96,8 +96,8 @@ pub struct SatCat {
     pub perigee: u64,
     pub comment: Option<String>,
     #[serde(rename = "COMMENTCODE")]
-    #[serde(deserialize_with = "deserialize_string_to_u8")]
-    pub comment_code: u8,
+    #[serde(deserialize_with = "deserialize_optional_string_to_u8")]
+    pub comment_code: Option<u8>,
     #[serde(rename = "RCSVALUE")]
     #[serde(deserialize_with = "deserialize_string_to_i8")]
     pub rcs_value: i8,
