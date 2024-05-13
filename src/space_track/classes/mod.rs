@@ -20,3 +20,6 @@ pub use satcat::{SatCat, SatCatField};
 
 mod satcat_change;
 pub use satcat_change::{SatCatChange, SatCatChangeField};
+
+mod satcat_debut;
+pub use satcat_debut::{SatCatDebut, SatCatDebutField};
