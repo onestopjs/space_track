@@ -13,3 +13,4 @@ pub const SATCAT_CHANGE_URL: &str =
     "https://www.space-track.org/basicspacedata/query/class/satcat_change";
 pub const SATCAT_DEBUT_URL: &str =
     "https://www.space-track.org/basicspacedata/query/class/satcat_debut";
+pub const TIP_URL: &str = "https://www.space-track.org/basicspacedata/query/class/tip";

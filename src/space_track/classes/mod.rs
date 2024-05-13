@@ -23,3 +23,6 @@ pub use satcat_change::{SatCatChange, SatCatChangeField};
 
 mod satcat_debut;
 pub use satcat_debut::{SatCatDebut, SatCatDebutField};
+
+mod tip;
+pub use tip::{Tip, TipField};

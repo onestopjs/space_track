@@ -12,7 +12,7 @@ pub use auth::Credentials;
 pub use classes::{
     Boxscore, BoxscoreField, CdmPublic, CdmPublicField, Decay, DecayField, GeneralPerturbation,
     GeneralPerturbationField, LaunchSite, LaunchSiteField, SatCat, SatCatChange, SatCatChangeField,
-    SatCatDebut, SatCatDebutField, SatCatField,
+    SatCatDebut, SatCatDebutField, SatCatField, Tip, TipField,
 };
 pub use config::{Config, Direction};
 pub use error::Error;
