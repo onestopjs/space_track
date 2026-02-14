@@ -14,7 +14,7 @@ pub use classes::{
     GeneralPerturbationField, LaunchSite, LaunchSiteField, SatCat, SatCatChange, SatCatChangeField,
     SatCatDebut, SatCatDebutField, SatCatField, Tip, TipField,
 };
-pub use config::{Config, Direction};
+pub use config::{Config, Direction, Predicate};
 pub use error::Error;
 use url::construct_url;
 
